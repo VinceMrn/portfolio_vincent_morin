@@ -51,10 +51,12 @@ header{
     z-index: -1;
     width: 100%;
     height: 100vh;
-    background-image: url(images/sky.png); /* Remplace par l'URL de ton image */
-    background-size: cover; /* L'image couvre toute la zone */
-    background-position: center; /* Centrer l'image */
-    background-repeat: no-repeat;
+    background-image: 
+        url(images/noise.png), /* Le grain */
+        url(images/sky.png); /* L'image principale */
+    background-size: auto, cover; /* Le grain garde sa taille d'origine, l'image principale couvre toute la zone */
+    background-position: 0 0, center; /* Le grain couvre toute la surface, l'image principale est centrée */
+    background-repeat: repeat, no-repeat;
 
     nav {
         display: flex;
@@ -114,9 +116,6 @@ header{
         flex-direction: column;
         text-align: center;
         padding: 9% 10% 7% 10%;
-        background-image: url(images/noise.png); /* Remplace par l'URL de ton image */
-        
-        opacity: 1; /* Ajuste selon l'effet désiré */
     
         h1{
             font-family: 'Druk Trial', sans-serif;
@@ -175,12 +174,20 @@ header{
 
 .propos{
     position: relative;
-
-    background-color: #F8F4F0;
-
     background-color: #F8F4F0;
     background-image: url(images/noise.png); 
 
+    // background-image: url(images/25599.png);
+    // background-repeat: no-repeat; 
+    // background-size: 100%;
+    // background-position: 0px -200px;
+
+    // background-image: 
+    //     url(images/noise.png), 
+    //     url(images/25599.webp); 
+    // background-repeat: repeat, no-repeat; 
+    // background-size: auto, 100%; 
+    // background-position: 0 0, 0px -200px; 
 
     clip-path: polygon(0% 1%, 5% 0% ,10% 2%, 15% 3%, 20% 1%, 25% 2%, 30% 1%, 35% 3.5%, 40% 1%,45% 2%, 50% 3%, 55% 1.5%, 60% 2%, 65% 0%, 70% 3%, 75% 1%, 80% 2%, 85% 1.5%, 90% 1%, 95% 2%, 100% 0%, 100% 100%, 0% 100%);
     
@@ -188,26 +195,37 @@ header{
     margin-top: 100vh;
     display: flex;
     justify-content: space-between;
-    padding: 14% 0% 0% 0%;
+    padding: 6% 0% 3% 0%;
    
 
 
         .ProposImgGauche{
-            width: 20%;
+            width: 18%;
+            position: relative;
+            top: 50px;
 
     
             .photo1{
                 position: relative;
-                left: -50px;
+                left: -100px;
                 display: inline-block;
                 transform: rotate(-5deg); 
             }
             .photo2{
                 position: relative;
                 top: -20px;
-                left: -50px;
+                left: -100px;
                 display: inline-block;
                 transform: rotate(3deg); 
+                z-index: 20;
+            }
+            .photo5{
+                position: absolute;
+                top: 600px;
+                left: -20px;
+                display: inline-block;
+                transform: rotate(-5deg); 
+                z-index: 15;
             }
             .portrait1{
                 width: 340px;
@@ -216,10 +234,14 @@ header{
             }
             .portrait2{
                 width: 360px;
-                height: 340px;
+                height: 400px;
                 object-fit: cover;
                 border: 3px solid #283A2A;
-
+            }
+            .portrait5{
+                width: 330px;
+                height: 260px;
+                object-fit: cover;
             }
         
            
@@ -237,12 +259,12 @@ header{
                 h3{
                     font-family: 'Druk Trial', sans-serif;
                     color: #283A2A;
-                    font-size: 190px;
+                    font-size: 204px;
                     font-weight: 800;
                     margin: 0px;
                     text-align: center;
                     position: relative;
-                    top: -100px;
+                    // top: -170px;
             
             
                 }
@@ -250,35 +272,52 @@ header{
 
             .textMoi{
                 position: relative;
-                top: -100px;
+                // top: -150px;
+
+                h4{
+                    font-family: 'Druk Trial', sans-serif;
+                    color: #283A2A;
+                    font-size: 34px;
+                    font-weight: 400;
+                    margin: 0px;
+                }
 
                 .moi1{
                     border-bottom: #283A2A 2px solid;
+
                      p{
-                         text-align: start;
-                         color: #283A2A;
-                         font-size: 20px;  
-                         font-weight: 400;
-                     }
+                        margin-top: 10px;
+                        margin-bottom: 30px;
+                        text-align: start;
+                        color: #283A2A;
+                        font-size: 18px;  
+                        font-weight: 400;
+                    }
                  }
                  .moi2{
+                    margin-top: 20px;
                      border-bottom: #283A2A 2px solid;
                       p{
-                          text-align: start;
-                          color: #283A2A;
-                          font-size: 20px;  
-                          font-weight: 400;
+                        margin-top: 10px;
+                        margin-bottom: 30px;
+                        text-align: start;
+                        color: #283A2A;
+                        font-size: 18px;  
+                        font-weight: 400;
       
                       }
           
                   }
                   .moi3{
+                    margin-top: 20px;
+
                       p{
-                          text-align: start;
-                          color: #283A2A;
-                          font-size: 20px;  
-                          font-weight: 400;
-      
+                        margin-top: 10px;
+                        text-align: start;
+                        color: #283A2A;
+                        font-size: 18px;  
+                        font-weight: 400;
+    
                       }
           
                   }
@@ -288,21 +327,30 @@ header{
         }
         
         .ProposImgDroite{
-            width: 20%;
+            width: 18%;
 
             .photo3{
                 position: relative;
-                top: -70px;
+                top: 40px;
                 right: -0px;
                 display: inline-block;
                 transform: rotate(-5deg); 
             }
             .photo4{
                 position: relative;
-                top: -100px;
+                top: -30px;
                 right: -50px;
                 display: inline-block;
-                transform: rotate(3deg); 
+                transform: rotate(0.5deg);
+                z-index: 20; 
+            }
+            .photo6{
+                position: absolute;
+                top: 680px;
+                z-index: 15;
+                right: -10px;
+                display: inline-block;
+                transform: rotate( 5deg); 
             }
             .portrait3{
                 width: 380px;
@@ -311,26 +359,26 @@ header{
             }
             .portrait4{
                 width: 320px;
-                height: 240px;
+                height: 260px;
                 object-fit: cover;
                 border: 3px solid #283A2A;
-
             }
-        
-           
+            .portrait6{
+                width: 300px;
+                height: 320px;
+                object-fit: cover;
+            }
         }
     }
     
-    
-
-
 
 .portfolio{
+    position: relative;
+    // // top: -150px;
+    z-index: 10;
     background-color: #F8F4F0;
     background-image: url(images/noise.png); 
-    opacity: 1; 
 
-    
     h3{
         font-family: 'Druk Trial', sans-serif;
         color: #283A2A;
@@ -341,6 +389,7 @@ header{
         position: -webkit-sticky;
         position: sticky;
         top: 150px;
+        z-index: 2;
     }
 
     .grid {
