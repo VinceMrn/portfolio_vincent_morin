@@ -125,4 +125,67 @@ document.addEventListener('DOMContentLoaded', () => {
             closeModal();
         }
     });
+
+    // Animation du chemin avec GSAP
+    const portfolioPath = document.querySelector('.portfolio-path path');
+    const portfolioSection = document.querySelector('.portfolio');
+
+    if (portfolioPath && portfolioSection) {
+        // Configuration initiale du path
+        const pathLength = portfolioPath.getTotalLength();
+        
+        // Configuration initiale - le trait est invisible
+        gsap.set(portfolioPath, {
+            strokeDasharray: pathLength,
+            strokeDashoffset: pathLength,
+            opacity: 1
+        });
+
+        // Animation du trait qui se dessine
+        gsap.to(portfolioPath, {
+            strokeDashoffset: 0,
+            ease: "none",
+            scrollTrigger: {
+                trigger: portfolioSection,
+                start: "top center",
+                end: "bottom center",
+                scrub: 1
+            }
+        });
+    }
+
+    // Animation des compétences
+    const skillLine = document.querySelector('.skill-line path');
+    const skillBlocks = document.querySelectorAll('.skill-block');
+    
+    if (skillLine) {
+        // Configuration de l'animation de la ligne
+        gsap.set(skillLine, {
+            strokeDasharray: '15, 20',
+            strokeDashoffset: window.innerWidth,
+            opacity: 1
+        });
+
+        // Animation de la ligne et des blocs
+        gsap.timeline({
+            scrollTrigger: {
+                trigger: '.competences',
+                start: 'top center',
+                end: 'center center',
+                scrub: 1
+            }
+        })
+        .to(skillLine, {
+            strokeDashoffset: 0,
+            duration: 1,
+            ease: 'power1.out'
+        })
+        .to(skillBlocks, {
+            opacity: 1,
+            y: 0,
+            duration: 0.8,
+            stagger: 0.2,
+            ease: 'back.out(1.7)'
+        }, '-=0.5');
+    }
 }); 

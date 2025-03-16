@@ -91,6 +91,18 @@
  
     
     <section class="portfolio mainColor" id="portfolio">
+        <div class="portfolio-path">
+            <svg viewBox="0 0 1920 3000" preserveAspectRatio="none">
+                <path d="M1800 100 
+                         C1800 150, 1700 200, 1600 250
+                         C1400 350, 200 400, 400 600
+                         C600 800, 1700 850, 1500 1100
+                         C1300 1350, 200 1400, 400 1600
+                         C600 1800, 1700 1850, 1500 2100
+                         C1300 2350, 200 2400, 400 2600
+                         C600 2800, 1500 2850, 1700 2900" />
+            </svg>
+        </div>
         <h3 class="réalisation">PORTFOLIO</h3>
         <div class="grid">
             <div class="case" data-project="villas-daumesnil">
@@ -151,82 +163,42 @@
 
 
     <section class="competences mainColor" id="competences">
+        <div class="skill-line">
+            <svg viewBox="0 0 1920 200" preserveAspectRatio="none">
+                <path d="M0 100 H1920" />
+            </svg>
+        </div>
         <h3>MES COMPETENCES</h3>
-        
         <div class="skills-container">
-            <!-- Front-end Tree -->
-            <div class="skill-tree frontend-tree">
-                <div class="tree-trunk">
-                    <h4>Front-end</h4>
-                    <div class="branches">
-                        <div class="skill-leaf" data-skill="HTML">
-                            <img src="images/leaf.png" alt="leaf">
-                            <span>HTML</span>
-                        </div>
-                        <div class="skill-leaf" data-skill="CSS">
-                            <img src="images/leaf.png" alt="leaf">
-                            <span>CSS</span>
-                        </div>
-                        <div class="skill-leaf" data-skill="JavaScript">
-                            <img src="images/leaf.png" alt="leaf">
-                            <span>JavaScript</span>
-                        </div>
-                        <div class="skill-leaf" data-skill="React">
-                            <img src="images/leaf.png" alt="leaf">
-                            <span>React.js</span>
-                        </div>
-                    </div>
-                </div>
+            <div class="skill-block" data-skill="frontend">
+                <h4>FRONT-END</h4>
+                <ul class="skills-list">
+                    <li>HTML5 / CSS3 / SASS</li>
+                    <li>JavaScript / TypeScript</li>
+                    <li>React.js / Next.js</li>
+                    <li>Responsive Design</li>
+                    <li>Animations & SVG</li>
+                </ul>
             </div>
-
-            <!-- Back-end Tree -->
-            <div class="skill-tree backend-tree">
-                <div class="tree-trunk">
-                    <h4>Back-end</h4>
-                    <div class="branches">
-                        <div class="skill-leaf" data-skill="PHP">
-                            <img src="images/leaf.png" alt="leaf">
-                            <span>PHP</span>
-                        </div>
-                        <div class="skill-leaf" data-skill="MySQL">
-                            <img src="images/leaf.png" alt="leaf">
-                            <span>MySQL</span>
-                        </div>
-                        <div class="skill-leaf" data-skill="Symphony">
-                            <img src="images/leaf.png" alt="leaf">
-                            <span>Symphony</span>
-                        </div>
-                        <div class="skill-leaf" data-skill="Laravel">
-                            <img src="images/leaf.png" alt="leaf">
-                            <span>Laravel</span>
-                        </div>
-                    </div>
-                </div>
+            <div class="skill-block" data-skill="backend">
+                <h4>BACK-END</h4>
+                <ul class="skills-list">
+                    <li>PHP / Laravel</li>
+                    <li>Node.js / Express</li>
+                    <li>MySQL / MongoDB</li>
+                    <li>API REST</li>
+                    <li>Sécurité Web</li>
+                </ul>
             </div>
-
-            <!-- Tools Tree -->
-            <div class="skill-tree tools-tree">
-                <div class="tree-trunk">
-                    <h4>Outils</h4>
-                    <div class="branches">
-                        <div class="skill-leaf" data-skill="WordPress">
-                            <img src="images/leaf.png" alt="leaf">
-                            <span>WordPress</span>
-                        </div>
-                        <div class="skill-leaf" data-skill="Adobe">
-                            <img src="images/leaf.png" alt="leaf">
-                            <span>Suite Adobe</span>
-                        </div>
-                        <div class="skill-leaf" data-skill="Figma">
-                            <img src="images/leaf.png" alt="leaf">
-                            <span>Figma</span>
-                        </div>
-                        <div class="skill-leaf" data-skill="ThreeJS">
-                            <img src="images/leaf.png" alt="leaf">
-                            <span>Three.js</span>
-                        </div>
-                    </div>
-                </div>
+            <div class="skill-block" data-skill="tools">
+                <h4>OUTILS</h4>
+                <ul class="skills-list">
+                    <li>Git / GitHub</li>
+                    <li>Figma / Adobe XD</li>
+                    <li>WordPress</li>
+                    <li>SEO / Analytics</li>
+                    <li>Méthodologie Agile</li>
+                </ul>
             </div>
         </div>
     </section>
