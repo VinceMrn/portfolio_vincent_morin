@@ -6,9 +6,26 @@
     <title>Portfolio Vincent</title>
     <link rel="stylesheet" href="styleIndex.css">
     <link href='https://fonts.googleapis.com/css?family=Familjen Grotesk' rel='stylesheet'>
+    <!-- Ajout des scripts GSAP -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
 </head>
 <body>
-
+    <!-- Chemin d'aventure -->
+    <div class="adventure-path">
+        <svg viewBox="0 0 1200 3000" preserveAspectRatio="none" class="path-svg">
+            <path class="main-path" 
+                  d="M100,0 
+                     C300,300 100,600 400,900 
+                     C100,1200 400,1500 200,1800
+                     C500,2100 100,2400 400,2700
+                     C200,2800 300,2900 200,3000" 
+                  stroke="#283A2A" 
+                  stroke-width="3" 
+                  fill="none"/>
+            <circle class="current-point" cx="100" cy="0" r="5" fill="#283A2A"/>
+        </svg>
+    </div>
 
    <header id="header">
 
@@ -70,7 +87,7 @@
                     </div>
                     <div class="moi3">
                         <h4>Mes passions ?</h4>
-                        <p>Amoureux de la nature et aventurier dans l’âme, j’aime faire des randonnées et découvrir de nouveaux paysages. Ces escapades nourrissent ma créativité et m’aident à évoluer personnellement et professionnellement.
+                        <p>Amoureux de la nature et aventurier dans l'âme, j'aime faire des randonnées et découvrir de nouveaux paysages. Ces escapades nourrissent ma créativité et m'aident à évoluer personnellement et professionnellement.
                         </p>
                     </div>
                 </div> 
@@ -92,150 +109,143 @@
     <section class="portfolio mainColor" id="portfolio">
         <h3 class="réalisation">PORTFOLIO</h3>
         <div class="grid">
-            <div class="case">
+            <div class="case" data-project="villas-daumesnil">
                 <div class="imgCase1">
-                    <img src="images/ikory.jpg">
+                    <img src="images/ikory.jpg" alt="Villas Daumesnil">
                 </div>
                 <p>Site Web Villas Daumesnil</p>
             </div>
-            <div class="case">
-                <div class="textCase2">
-                </div>
+            <div class="case" data-project="villas-daumesnil-2">
                 <div class="imgCase2">
-                    <img src="images/ikory.jpg">
+                    <img src="images/ikory.jpg" alt="Villas Daumesnil">
                 </div>
                 <p>Site Web Villas Daumesnil</p>
             </div>
-            <div class="case">
-                <div class="textCase3">
-                </div>
+            <div class="case" data-project="axione">
                 <div class="imgCase3">
-                    <video autoplay loop muted>
+                    <video autoplay loop muted playsinline>
                         <source src="images/AXIONE.mp4" type="video/mp4">
                     </video>
                 </div>
                 <p>Motion design pour Axione</p>
             </div>
-            <div class="case">
-                <div class="textCase4">
-                </div>
+            <div class="case" data-project="midjourney">
                 <div class="imgCase4">
-                    <img src="images/macdo.png">
+                    <img src="images/macdo.png" alt="IA Midjourney Instagram">
                 </div> 
                 <p>IA Midjourney Instagram</p>
             </div>
-            <div class="case">
-                <div class="textCase5">
-                </div>
+            <div class="case" data-project="zebra">
                 <div class="imgCase5">
-                    <img src="images/siteZebra.png">
+                    <img src="images/siteZebra.png" alt="Site Web Agence Zebra">
                 </div> 
                 <p>Site Web Agence Zebra</p>
             </div>
-            <div class="case">
-                <div class="textCase6">
-                </div>
+            <div class="case" data-project="autisme">
                 <div class="imgCase6">
-                    <img src="images/GRAPHIQUE.gif">
+                    <img src="images/GRAPHIQUE.gif" alt="Site Web sur l'autisme">
                 </div> 
                 <p>Site Web sur l'autisme</p>
+            </div>
+        </div>
+
+        <!-- Modal Overlay -->
+        <div class="modal-overlay">
+            <div class="polaroid-card">
+                <div class="polaroid-image">
+                    <!-- Image/Video sera injectée ici via JavaScript -->
+                </div>
+                <div class="polaroid-content">
+                    <h2></h2>
+                    <p></p>
+                    <a href="#" class="view-project">VOIR LE PROJET</a>
+                </div>
+                <button class="close-modal" aria-label="Fermer">&times;</button>
             </div>
         </div>
     </section>
 
 
     <section class="competences mainColor" id="competences">
-            <h3>MES COMPETENCES</h3>
-            <div class="skill">
-                <div class="crée">
+        <h3>MES COMPETENCES</h3>
+        
+        <div class="skills-container">
+            <!-- Front-end Tree -->
+            <div class="skill-tree frontend-tree">
+                <div class="tree-trunk">
                     <h4>Front-end</h4>
-                    <div class="lesSkills">
-                        <div>
-                            <img src="">
-                            <p>HTML</p>
+                    <div class="branches">
+                        <div class="skill-leaf" data-skill="HTML">
+                            <img src="images/leaf.png" alt="leaf">
+                            <span>HTML</span>
                         </div>
-                        <div>
-                            <img src="">
-                            <p>CSS</p>
+                        <div class="skill-leaf" data-skill="CSS">
+                            <img src="images/leaf.png" alt="leaf">
+                            <span>CSS</span>
                         </div>
-                        <div>
-                            <img src="">
-                            <p>JAVASCRIPT</p>
+                        <div class="skill-leaf" data-skill="JavaScript">
+                            <img src="images/leaf.png" alt="leaf">
+                            <span>JavaScript</span>
                         </div>
-                        <div>
-                            <img src="">
-                            <p>REACT.JS</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="crée">
-                    <h4>Front-end</h4>
-                    <div class="lesSkills">
-                        <div>
-                            <img src="">
-                            <p>HTML</p>
-                        </div>
-                        <div>
-                            <img src="">
-                            <p>CSS</p>
-                        </div>
-                        <div>
-                            <img src="">
-                            <p>JAVASCRIPT</p>
-                        </div>
-                        <div>
-                            <img src="">
-                            <p>REACT.JS</p>
+                        <div class="skill-leaf" data-skill="React">
+                            <img src="images/leaf.png" alt="leaf">
+                            <span>React.js</span>
                         </div>
                     </div>
                 </div>
-                <div class="crée dev">
-                    <h4>Back-end</h4>
-                    <div class="lesSkills">
-                        <div>
-                            <img src="">
-                            <p>PHP</p>
-                        </div>
-                        <div>
-                            <img src="">
-                            <p>MYSQL</p>
-                        </div>
-                        <div>
-                            <img src="">
-                            <p>SYMPHONY</p>
-                        </div>
-                        <div>
-                            <img src="">
-                            <p>LARAVAL</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="crée com">
-                    <h4>Petit Plus</h4>
-                    <div class="lesSkills">
-                        <div>
-                            <img src="">
-                            <p>WORDPRESS</p>
-                        </div>
-                        <div>
-                            <img src="">
-                            <p>SUITE ADOBE</p>
-                        </div>
-                        <div>
-                            <img src="">
-                            <p>FIGMA</p>
-                        </div>
-                        <div>
-                            <img src="">
-                            <p>THREE.JS</p>
-                        </div>
-                    </div>
-                </div>  
             </div>
-            <div class="">
 
+            <!-- Back-end Tree -->
+            <div class="skill-tree backend-tree">
+                <div class="tree-trunk">
+                    <h4>Back-end</h4>
+                    <div class="branches">
+                        <div class="skill-leaf" data-skill="PHP">
+                            <img src="images/leaf.png" alt="leaf">
+                            <span>PHP</span>
+                        </div>
+                        <div class="skill-leaf" data-skill="MySQL">
+                            <img src="images/leaf.png" alt="leaf">
+                            <span>MySQL</span>
+                        </div>
+                        <div class="skill-leaf" data-skill="Symphony">
+                            <img src="images/leaf.png" alt="leaf">
+                            <span>Symphony</span>
+                        </div>
+                        <div class="skill-leaf" data-skill="Laravel">
+                            <img src="images/leaf.png" alt="leaf">
+                            <span>Laravel</span>
+                        </div>
+                    </div>
+                </div>
             </div>
-        </section>
+
+            <!-- Tools Tree -->
+            <div class="skill-tree tools-tree">
+                <div class="tree-trunk">
+                    <h4>Outils</h4>
+                    <div class="branches">
+                        <div class="skill-leaf" data-skill="WordPress">
+                            <img src="images/leaf.png" alt="leaf">
+                            <span>WordPress</span>
+                        </div>
+                        <div class="skill-leaf" data-skill="Adobe">
+                            <img src="images/leaf.png" alt="leaf">
+                            <span>Suite Adobe</span>
+                        </div>
+                        <div class="skill-leaf" data-skill="Figma">
+                            <img src="images/leaf.png" alt="leaf">
+                            <span>Figma</span>
+                        </div>
+                        <div class="skill-leaf" data-skill="ThreeJS">
+                            <img src="images/leaf.png" alt="leaf">
+                            <span>Three.js</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
     
     <footer id="footer">
@@ -288,37 +298,6 @@
     </footer>
     
 
-    <script>
-
-        //STATIC HEADER FOOTER
-        document.addEventListener("DOMContentLoaded", toggleHeaderFooter);
-        document.addEventListener("scroll", toggleHeaderFooter);
-
-        function toggleHeaderFooter() {
-            const header = document.getElementById("header");
-            const footer = document.getElementById("footer");
-            const portfolioSection = document.getElementById("portfolio");
-            const contactSection = document.getElementById("competences");
-
-            const portfolioTop = portfolioSection.getBoundingClientRect().top;
-            const contactTop = contactSection.getBoundingClientRect().top;
-
-            if (portfolioTop <= 0) {
-                header.style.display = "none";
-                footer.style.display = "block";
-            } 
-            else if (contactTop > window.innerHeight) {
-                header.style.display = "block";
-                footer.style.display = "none";
-            }
-        }
-
-
-      
-
-
-
-        
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>
