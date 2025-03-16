@@ -155,37 +155,57 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // Animation des compétences
-    const skillLine = document.querySelector('.skill-line path');
+    const skillsSection = document.querySelector('.competences');
+    const skillsTitle = skillsSection.querySelector('h3');
+    const skillLine = document.querySelector('.skill-line');
     const skillBlocks = document.querySelectorAll('.skill-block');
-    
-    if (skillLine) {
-        // Configuration de l'animation de la ligne
-        gsap.set(skillLine, {
-            strokeDasharray: '15, 20',
-            strokeDashoffset: window.innerWidth,
-            opacity: 1
-        });
 
-        // Animation de la ligne et des blocs
-        gsap.timeline({
+    if (skillsSection) {
+        // Timeline pour l'animation des compétences
+        const skillsTimeline = gsap.timeline({
             scrollTrigger: {
-                trigger: '.competences',
+                trigger: skillsSection,
                 start: 'top center',
                 end: 'center center',
-                scrub: 1
+                toggleActions: 'play none none reverse'
             }
-        })
-        .to(skillLine, {
-            strokeDashoffset: 0,
-            duration: 1,
-            ease: 'power1.out'
-        })
-        .to(skillBlocks, {
+        });
+
+        // Animation du titre
+        skillsTimeline.to(skillsTitle, {
             opacity: 1,
             y: 0,
             duration: 0.8,
-            stagger: 0.2,
-            ease: 'back.out(1.7)'
-        }, '-=0.5');
+            ease: 'power2.out'
+        });
+
+        // Animation de la ligne
+        skillsTimeline.fromTo(skillLine, 
+            { scaleX: 0 },
+            {
+                scaleX: 1,
+                duration: 1.2,
+                ease: 'power2.inOut'
+            },
+            '-=0.4'
+        );
+
+        // Animation séquentielle des points et des blocs
+        skillBlocks.forEach((block, index) => {
+            const delay = index * 0.4;
+            
+            // Animation du point et de la ligne verticale
+            skillsTimeline.add(() => {
+                block.classList.add('visible');
+            }, `-=${1.2 - delay}`);
+
+            // Animation du bloc
+            skillsTimeline.to(block, {
+                opacity: 1,
+                y: 0,
+                duration: 0.6,
+                ease: 'back.out(1.2)'
+            }, '-=0.3');
+        });
     }
 }); 

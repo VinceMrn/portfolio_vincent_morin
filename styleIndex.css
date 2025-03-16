@@ -487,70 +487,115 @@ header .title .title-center .soustitre h2 {
 }
 
 .competences {
-  background-color: #F8F4F0;
-  background-image: url(images/noise.png);
-  width: 100%;
-  padding: 8% 0;
   position: relative;
-  overflow: hidden;
+  background-image: url(images/noise.png), url(images/232.png);
+  background-repeat: repeat, no-repeat;
+  background-size: auto, 100%;
+  background-position: 0 0px, 0px 0px;
+  margin-bottom: 80vh;
+  justify-content: space-between;
+  padding: 5% 0% 10% 0%;
+}
+.competences .competences-bottom-path {
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 100%;
+  height: 200px;
+  pointer-events: none;
+  z-index: 3;
+}
+.competences .competences-bottom-path svg {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  bottom: 0;
+  left: 0;
+}
+.competences .competences-bottom-path svg path {
+  fill: #283A2A;
+  filter: drop-shadow(0 -2px 4px rgba(40, 58, 42, 0.2));
 }
 .competences .skill-line {
   position: absolute;
-  top: 0;
+  top: 465px;
   left: 0;
   width: 100%;
-  height: 100%;
-  pointer-events: none;
+  height: 3px;
+  background-color: #283A2A;
+  transform-origin: left;
   z-index: 1;
 }
-.competences .skill-line svg {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  top: 0;
-  left: 0;
-}
-.competences .skill-line svg path {
-  fill: none;
-  stroke: #283A2A;
-  stroke-width: 1;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-  stroke-dasharray: 15, 20;
-  filter: drop-shadow(0 2px 4px rgba(40, 58, 42, 0.2));
-  opacity: 0;
-}
 .competences h3 {
-  margin: 0 0 80px 0;
+  margin: 0 0 120px 0;
   font-family: "Druk Trial", sans-serif;
   color: #283A2A;
   font-size: 200px;
   font-weight: 800;
   text-align: center;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s ease;
+}
+.competences h3.visible {
+  opacity: 1;
+  transform: translateY(0);
 }
 .competences .skills-container {
   display: flex;
-  justify-content: center;
-  gap: 60px;
+  justify-content: space-between;
   padding: 0 10%;
   position: relative;
   z-index: 2;
+  margin-top: 50px;
 }
 .competences .skill-block {
-  flex: 1;
-  max-width: 400px;
+  flex: 0 1 300px;
   background: rgba(40, 58, 42, 0.03);
   border: 2px solid #283A2A;
   border-radius: 15px;
   padding: 40px;
-  transform: translateY(50px);
   opacity: 0;
+  transform: translateY(50px);
   transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
   box-shadow: 0 10px 30px rgba(40, 58, 42, 0.1);
+  position: relative;
+  margin-top: 50px;
+}
+.competences .skill-block::before {
+  content: "";
+  position: absolute;
+  top: -65px;
+  left: 50%;
+  width: 17px;
+  height: 17px;
+  background: #283A2A;
+  border-radius: 50%;
+  transform: translateX(-50%) scale(0);
+  transition: transform 0.4s ease;
+  z-index: 3;
+}
+.competences .skill-block::after {
+  content: "";
+  position: absolute;
+  top: -50px;
+  left: 50%;
+  width: 2px;
+  height: 50px;
+  background: #283A2A;
+  transform: scaleY(0);
+  transform-origin: top;
+  transition: transform 0.4s ease 0.2s;
 }
 .competences .skill-block.visible {
-  transform: translateY(0);
   opacity: 1;
+  transform: translateY(0);
+}
+.competences .skill-block.visible::before {
+  transform: translateX(-50%) scale(1);
+}
+.competences .skill-block.visible::after {
+  transform: scaleY(1);
 }
 .competences .skill-block h4 {
   font-family: "Druk Trial", sans-serif;
@@ -559,6 +604,7 @@ header .title .title-center .soustitre h2 {
   font-weight: 700;
   margin: 0 0 30px 0;
   text-align: center;
+  text-transform: uppercase;
 }
 .competences .skill-block .skills-list {
   list-style: none;
@@ -620,7 +666,7 @@ footer .BoxFooter .title-centerFooter {
 footer .BoxFooter .title-centerFooter h3 {
   font-family: "Druk Trial", sans-serif;
   font-weight: 900;
-  font-size: 197px;
+  font-size: 259px;
   word-wrap: break-word;
   overflow-wrap: break-word;
   margin: 0;
@@ -764,7 +810,7 @@ footer .end .legal {
   width: 650px;
   max-width: 90%;
   position: relative;
-  transform: translateY(30px) rotate(0deg);
+  transform: translateY(30px) rotate(-2deg);
   opacity: 0;
   transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
   border-radius: 3px;
@@ -774,36 +820,80 @@ footer .end .legal {
   border-radius: 3px;
   overflow: hidden;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1) inset;
+  background-color: #f5f5f5;
+  aspect-ratio: 4/3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.polaroid-card .polaroid-image img, .polaroid-card .polaroid-image video {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  display: block;
+}
+.polaroid-card .polaroid-content {
+  text-align: center;
+  padding: 0 20px;
 }
 .polaroid-card .polaroid-content h2 {
   font-family: "Cabinet Grotesk", sans-serif;
   font-size: 24px;
   color: #283A2A;
-  margin-bottom: 20px;
+  margin-bottom: 15px;
   font-weight: 700;
 }
-
-.case {
+.polaroid-card .polaroid-content p {
+  color: #283A2A;
+  font-size: 16px;
+  line-height: 1.5;
+  margin-bottom: 25px;
+  opacity: 0.9;
+}
+.polaroid-card .polaroid-content .view-project {
+  display: inline-block;
+  padding: 12px 25px;
+  background-color: #283A2A;
+  color: white;
+  text-decoration: none;
+  border-radius: 5px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+.polaroid-card .polaroid-content .view-project:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(40, 58, 42, 0.2);
+}
+.polaroid-card .close-modal {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background: none;
+  border: none;
+  font-size: 28px;
+  color: #283A2A;
   cursor: pointer;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  position: relative;
+  padding: 5px;
+  line-height: 1;
+  opacity: 0.7;
+  transition: all 0.3s ease;
 }
-.case:hover {
-  transform: translateY(-5px);
-}
-.case:hover img, .case:hover video {
-  transform: scale(1.05);
-}
-.case img, .case video {
-  transition: transform 0.5s ease;
+.polaroid-card .close-modal:hover {
+  opacity: 1;
+  transform: rotate(90deg);
 }
 
 @media (max-width: 768px) {
   .polaroid-card {
-    padding: 15px 15px 40px 15px;
+    padding: 15px 15px 35px 15px;
+  }
+  .polaroid-card .polaroid-content {
+    padding: 0 10px;
   }
   .polaroid-card .polaroid-content h2 {
     font-size: 20px;
+    margin-bottom: 12px;
   }
   .polaroid-card .polaroid-content p {
     font-size: 14px;
@@ -812,6 +902,11 @@ footer .end .legal {
   .polaroid-card .polaroid-content .view-project {
     padding: 10px 20px;
     font-size: 14px;
+  }
+  .polaroid-card .close-modal {
+    top: 10px;
+    right: 10px;
+    font-size: 24px;
   }
 }
 .adventure-path {
