@@ -247,33 +247,64 @@ document.addEventListener('DOMContentLoaded', () => {
             ease: 'power2.out'
         });
 
-        // Animation de la ligne
-        skillsTimeline.fromTo(skillLine, 
-            { scaleX: 0 },
+        // Animation de la ligne liée au scroll
+        gsap.fromTo(skillLine, 
+            { 
+                scaleX: 0,
+                transformOrigin: "right center"
+            },
             {
                 scaleX: 1,
-                duration: 1.2,
-                ease: 'power2.inOut'
-            },
-            '-=0.4'
+                duration: 1,
+                ease: "none",
+                scrollTrigger: {
+                    trigger: skillsSection,
+                    start: "top center",
+                    end: "center center",
+                    scrub: 1
+                }
+            }
         );
 
-        // Animation séquentielle des points et des blocs
-        skillBlocks.forEach((block, index) => {
-            const delay = index * 0.4;
+        // Animation des blocs liée au scroll
+        const reversedBlocks = Array.from(skillBlocks).reverse();
+        reversedBlocks.forEach((block, index) => {
+            const progress = (index + 1) / reversedBlocks.length;
             
-            // Animation du point et de la ligne verticale
-            skillsTimeline.add(() => {
-                block.classList.add('visible');
-            }, `-=${1.2 - delay}`);
-
-            // Animation du bloc
-            skillsTimeline.to(block, {
-                opacity: 1,
-                y: 0,
-                duration: 0.6,
-                ease: 'back.out(1.2)'
-            }, '-=0.3');
+            // Animation du contour de la box
+            gsap.fromTo(block,
+                {
+                    opacity: 0,
+                    y: 50,
+                    borderWidth: 0
+                },
+                {
+                    opacity: 1,
+                    y: 0,
+                    borderWidth: 2,
+                    duration: 0.6,
+                    ease: "back.out(1.2)",
+                    scrollTrigger: {
+                        trigger: skillsSection,
+                        start: "top center",
+                        end: "center center",
+                        scrub: 1,
+                        onUpdate: (self) => {
+                            if (self.progress >= progress) {
+                                block.classList.add('visible');
+                                // Animation du contour
+                                const borderProgress = (self.progress - progress) * 2;
+                                if (borderProgress > 0) {
+                                    block.style.borderWidth = `${2 * borderProgress}px`;
+                                }
+                            } else {
+                                block.classList.remove('visible');
+                                block.style.borderWidth = '0px';
+                            }
+                        }
+                    }
+                }
+            );
         });
     }
 
