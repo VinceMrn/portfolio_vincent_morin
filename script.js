@@ -52,6 +52,76 @@ const projectsConfig = {
     }
 };
 
+// Configuration de Lenis pour un défilement fluide
+const lenis = new Lenis({
+    duration: 2.5,
+    easing: (t) => {
+        const c1 = 1.70158;
+        const c2 = c1 * 1.525;
+        return t < 0.5
+            ? (Math.pow(2 * t, 2) * ((c2 + 1) * 2 * t - c2)) / 2
+            : (Math.pow(2 * t - 2, 2) * ((c2 + 1) * (t * 2 - 2) + c2) + 2) / 2;
+    },
+    orientation: 'vertical',
+    gestureOrientation: 'vertical',
+    smoothWheel: true,
+    wheelMultiplier: 0.6,
+    smoothTouch: true,
+    touchMultiplier: 1.5,
+    infinite: false,
+    normalizeWheel: true,
+    lerp: 0.05,
+    syncTouch: true,
+    syncTouchLerp: 0.05,
+    touchInertiaMultiplier: 2,
+    autoResize: true,
+    smooth: true,
+    smoothTouchMultiplier: 1.5,
+    smoothWheelMultiplier: 0.6,
+    smoothTouchDuration: 1.5,
+    smoothWheelDuration: 2.5,
+    smoothTouchEasing: (t) => {
+        return t < 0.5
+            ? 2 * t * t
+            : -1 + (4 - 2 * t) * t;
+    },
+    smoothWheelEasing: (t) => {
+        return t < 0.5
+            ? 4 * t * t * t
+            : (t - 1) * (2 * t - 2) * (2 * t - 2) + 1;
+    }
+});
+
+// Synchroniser Lenis avec GSAP ScrollTrigger
+gsap.ticker.add((time) => {
+    lenis.raf(time * 1000);
+});
+
+// Configuration de GSAP ScrollTrigger
+gsap.registerPlugin(ScrollTrigger);
+
+ScrollTrigger.scrollerProxy(document.body, {
+    scrollTop(value) {
+        if (arguments.length) {
+            lenis.scrollTo(value, { 
+                immediate: false,
+                duration: 2.5,
+                easing: (t) => {
+                    const c1 = 1.70158;
+                    const c2 = c1 * 1.525;
+                    return t < 0.5
+                        ? (Math.pow(2 * t, 2) * ((c2 + 1) * 2 * t - c2)) / 2
+                        : (Math.pow(2 * t - 2, 2) * ((c2 + 1) * (t * 2 - 2) + c2) + 2) / 2;
+                }
+            });
+        }
+        return lenis.scroll;
+    },
+    getBoundingClientRect() {
+        return { top: 0, left: 0, width: window.innerWidth, height: window.innerHeight };
+    }
+});
+
 // Initialisation au chargement du document
 document.addEventListener('DOMContentLoaded', () => {
     // Initialisation du header/footer
@@ -131,19 +201,17 @@ document.addEventListener('DOMContentLoaded', () => {
     const portfolioSection = document.querySelector('.portfolio');
 
     if (portfolioPath && portfolioSection) {
-        // Configuration initiale du path
         const pathLength = portfolioPath.getTotalLength();
         
-        // Configuration initiale - le trait est invisible
         gsap.set(portfolioPath, {
             strokeDasharray: pathLength,
             strokeDashoffset: pathLength,
             opacity: 1
         });
 
-        // Animation du trait qui se dessine
         gsap.to(portfolioPath, {
             strokeDashoffset: 0,
+            duration: 1,
             ease: "none",
             scrollTrigger: {
                 trigger: portfolioSection,
@@ -208,4 +276,47 @@ document.addEventListener('DOMContentLoaded', () => {
             }, '-=0.3');
         });
     }
+
+    // Animation du titre principal
+    gsap.to(".title h1", {
+        scrollTrigger: {
+            trigger: ".title",
+            start: "top center",
+            end: "bottom center",
+            scrub: 1
+        },
+        y: -100,
+        opacity: 0,
+        duration: 1,
+        ease: "power2.inOut"
+    });
+
+    // Animation des images
+    gsap.to(".ProposImgGauche .photo1, .ProposImgGauche .photo2, .ProposImgGauche .photo5", {
+        scrollTrigger: {
+            trigger: ".propos",
+            start: "top center",
+            end: "bottom center",
+            scrub: 1
+        },
+        x: -50,
+        rotate: -10,
+        duration: 1,
+        ease: "power2.inOut"
+    });
+
+    // Animation des cases du portfolio
+    gsap.to(".case", {
+        scrollTrigger: {
+            trigger: ".portfolio",
+            start: "top center",
+            end: "bottom center",
+            scrub: 1
+        },
+        y: -50,
+        rotate: 0,
+        duration: 1,
+        stagger: 0.2,
+        ease: "power2.out"
+    });
 }); 
