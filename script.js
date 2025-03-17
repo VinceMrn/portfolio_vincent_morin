@@ -250,11 +250,10 @@ document.addEventListener('DOMContentLoaded', () => {
         // Animation de la ligne liée au scroll
         gsap.fromTo(skillLine, 
             { 
-                scaleX: 0,
-                transformOrigin: "right center"
+                clipPath: "inset(0 0 0 100%)"
             },
             {
-                scaleX: 1,
+                clipPath: "inset(0 0 0 0%)",
                 duration: 1,
                 ease: "none",
                 scrollTrigger: {
