@@ -58,8 +58,8 @@ header nav ul {
   padding: 0.5% 0% 0.5% 0%;
 }
 header nav li {
-  font-size: 18px;
-  font-weight: 700;
+  font-size: 20px;
+  font-weight: 800;
   color: #F8F4F0;
 }
 header nav a {
@@ -134,7 +134,7 @@ header .title .title-center .soustitre h2 {
   width: 20%;
   color: #F8F4F0;
   font-size: 21px;
-  font-weight: bold;
+  font-weight: 800;
   text-align: right;
   margin: 0;
 }
@@ -152,161 +152,138 @@ header .title .title-center .soustitre h2 {
   background-image: url(images/noise.png), url(images/25599.png);
   background-repeat: repeat, no-repeat;
   background-size: auto, 120%;
-  background-position: 0 0px, 0px -280px;
+  background-position: 200px, 0px -294px;
   margin-top: 100vh;
   display: flex;
   justify-content: space-between;
-  padding: 5% 0% 1% 0%;
+  padding: 2% 0% 0% 0%;
 }
 .propos .ProposImgGauche {
-  width: 17%;
+  width: 25%;
   margin-top: 70px;
-}
-.propos .ProposImgGauche .photo1 {
+  left: -40px;
   position: relative;
-  left: -100px;
-  display: inline-block;
-  transform: rotate(-5deg);
-}
-.propos .ProposImgGauche .photo2 {
-  position: relative;
-  top: -20px;
-  left: -100px;
-  display: inline-block;
-  transform: rotate(3deg);
   z-index: 2;
 }
-.propos .ProposImgGauche .photo5 {
-  position: relative;
-  top: -50px;
-  left: -20px;
-  display: inline-block;
-  transform: rotate(-5deg);
-  z-index: 1;
-}
 .propos .ProposImgGauche .portrait1 {
-  width: 340px;
-  height: 240px;
+  width: 420px;
+  height: 280px;
   -o-object-fit: cover;
      object-fit: cover;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.733);
 }
 .propos .ProposImgGauche .portrait2 {
   width: 360px;
-  height: 400px;
+  height: 480px;
   -o-object-fit: cover;
      object-fit: cover;
-  border: 3px solid #283A2A;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.76);
 }
 .propos .ProposImgGauche .portrait5 {
-  width: 330px;
+  width: 400px;
   height: 260px;
   -o-object-fit: cover;
      object-fit: cover;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.733);
 }
 .propos .textCentre {
-  display: flex;
-  flex-direction: column;
-  width: 40%;
+  width: 35%;
   position: relative;
+  margin-top: -30px;
+  z-index: 1;
 }
 .propos .textCentre .TitlePropos h3 {
   font-family: "Druk Trial", sans-serif;
   color: #283A2A;
-  font-size: 195px;
+  font-size: 190px;
   font-weight: 800;
-  margin: 0px;
+  margin: 0;
   text-align: center;
+  transform: rotate(-4deg);
   position: relative;
+  top: 100px;
+  left: -140px;
+  z-index: 1;
 }
 .propos .textCentre .textMoi {
-  position: relative;
+  background: rgba(255, 255, 255, 0.6);
+  -webkit-backdrop-filter: blur(5px);
+          backdrop-filter: blur(5px);
+  padding: 40px 60px;
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(40, 58, 42, 0.1);
+  transform: rotate(1deg);
+  margin-top: 40px;
 }
 .propos .textCentre .textMoi h4 {
   font-family: "Druk Trial", sans-serif;
   color: #283A2A;
-  font-size: 34px;
+  font-size: 40px;
   font-weight: 400;
-  margin: 0px;
+  margin: 0 0 20px 0;
+  transform: rotate(-1deg);
 }
 .propos .textCentre .textMoi .moi1 {
-  margin-top: 30px;
-  border-bottom: #283A2A 2px solid;
+  margin-top: 25px;
+  padding-bottom: 20px;
+  border-bottom: 2px solid rgba(40, 58, 42, 0.2);
 }
 .propos .textCentre .textMoi .moi1 p {
-  margin-top: 10px;
-  margin-bottom: 30px;
-  text-align: start;
   color: #283A2A;
   font-size: 18px;
   font-weight: 400;
+  line-height: 1.6;
+  margin: 0;
 }
 .propos .textCentre .textMoi .moi2 {
-  margin-top: 20px;
-  border-bottom: #283A2A 2px solid;
+  margin-top: 25px;
+  padding-bottom: 20px;
+  border-bottom: 2px solid rgba(40, 58, 42, 0.2);
 }
 .propos .textCentre .textMoi .moi2 p {
-  margin-top: 10px;
-  margin-bottom: 30px;
-  text-align: start;
   color: #283A2A;
   font-size: 18px;
   font-weight: 400;
+  line-height: 1.6;
 }
 .propos .textCentre .textMoi .moi3 {
-  margin-top: 20px;
+  margin-top: 25px;
+  padding-bottom: 20px;
+  border-bottom: 2px solid rgba(40, 58, 42, 0.2);
 }
 .propos .textCentre .textMoi .moi3 p {
-  margin-top: 10px;
-  text-align: start;
   color: #283A2A;
   font-size: 18px;
   font-weight: 400;
+  line-height: 1.6;
 }
 .propos .ProposImgDroite {
-  width: 17%;
-  margin-top: 10px;
-}
-.propos .ProposImgDroite .photo3 {
+  width: 25%;
+  margin-top: 40px;
+  right: -10px;
   position: relative;
-  top: 40px;
-  right: 0px;
-  display: inline-block;
-  transform: rotate(-5deg);
-}
-.propos .ProposImgDroite .photo4 {
-  position: relative;
-  top: -30px;
-  right: -50px;
-  display: inline-block;
-  transform: rotate(0.5deg);
   z-index: 2;
 }
-.propos .ProposImgDroite .photo6 {
-  position: relative;
-  top: -60px;
-  right: -10px;
-  display: inline-block;
-  transform: rotate(5deg);
-  z-index: 1;
-}
 .propos .ProposImgDroite .portrait3 {
-  width: 380px;
-  height: 400px;
+  width: 340px;
+  height: 440px;
   -o-object-fit: cover;
      object-fit: cover;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.699);
 }
 .propos .ProposImgDroite .portrait4 {
-  width: 320px;
-  height: 260px;
+  width: 560px;
+  height: 280px;
   -o-object-fit: cover;
      object-fit: cover;
-  border: 3px solid #283A2A;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.658);
 }
 .propos .ProposImgDroite .portrait6 {
-  width: 300px;
-  height: 320px;
+  width: 320px;
+  height: 340px;
   -o-object-fit: cover;
      object-fit: cover;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.664);
 }
 
 .portfolio {
@@ -491,7 +468,7 @@ header .title .title-center .soustitre h2 {
   background-image: url(images/noise.png), url(images/232.png);
   background-repeat: repeat, no-repeat;
   background-size: auto, 100%;
-  background-position: 0 0px, 0px 0px;
+  background-position: 0 0px, 0px 15px;
   margin-bottom: 80vh;
   justify-content: space-between;
   padding: 5% 0% 10% 0%;

@@ -307,21 +307,8 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Animation du titre principal
-    gsap.to(".title h1", {
-        scrollTrigger: {
-            trigger: ".title",
-            start: "top center",
-            end: "bottom center",
-            scrub: 1
-        },
-        y: -100,
-        opacity: 0,
-        duration: 1,
-        ease: "power2.inOut"
-    });
-
     // Animation des images
+    // Images de gauche
     gsap.to(".ProposImgGauche .photo1, .ProposImgGauche .photo2, .ProposImgGauche .photo5", {
         scrollTrigger: {
             trigger: ".propos",
@@ -334,6 +321,28 @@ document.addEventListener('DOMContentLoaded', () => {
         duration: 1,
         ease: "power2.inOut"
     });
+
+    // Images de droite
+    gsap.to(".ProposImgDroite .photo3, .ProposImgDroite .photo4, .ProposImgDroite .photo6", {
+        scrollTrigger: {
+            trigger: ".propos",
+            start: "top center",
+            end: "bottom center",
+            scrub: 1
+        },
+        x: 50,
+        rotate: 10,
+        duration: 1,
+        ease: "power2.inOut"
+    });
+
+    // Animation de rotation initiale des images
+    gsap.set(".ProposImgGauche .photo1", { rotate: -5 });
+    gsap.set(".ProposImgGauche .photo2", { rotate: 3 });
+    gsap.set(".ProposImgGauche .photo5", { rotate: -5 });
+    gsap.set(".ProposImgDroite .photo3", { rotate: -5 });
+    gsap.set(".ProposImgDroite .photo4", { rotate: 0.5 });
+    gsap.set(".ProposImgDroite .photo6", { rotate: 5 });
 
     // Animation des cases du portfolio
     gsap.to(".case", {
