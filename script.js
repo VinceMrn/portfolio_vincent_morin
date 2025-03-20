@@ -358,4 +358,45 @@ document.addEventListener('DOMContentLoaded', () => {
         stagger: 0.2,
         ease: "power2.out"
     });
+
+    // Menu burger
+    const burger = document.querySelector('.burger-menu');
+    const nav = document.querySelector('.nav-links');
+    const navLinks = document.querySelectorAll('.nav-links li');
+
+    burger.addEventListener('click', () => {
+        // Toggle nav
+        nav.classList.toggle('active');
+        burger.classList.toggle('active');
+
+        // Animate links
+        navLinks.forEach((link, index) => {
+            link.classList.toggle('show');
+        });
+    });
+
+    // Close menu when clicking on a link
+    navLinks.forEach(link => {
+        link.addEventListener('click', () => {
+            nav.classList.remove('active');
+            burger.classList.remove('active');
+            navLinks.forEach(link => link.classList.remove('show'));
+        });
+    });
+
+    // Ajout de l'animation keyframe au début du fichier
+    const style = document.createElement('style');
+    style.textContent = `
+        @keyframes navLinkFade {
+            from {
+                opacity: 0;
+                transform: translateX(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+    `;
+    document.head.appendChild(style);
 }); 
