@@ -358,30 +358,4 @@ document.addEventListener('DOMContentLoaded', () => {
         stagger: 0.2,
         ease: "power2.out"
     });
-
-    // Animation de la ligne des services
-    const servicesPath = document.querySelector('.services .dotted-line path');
-    const servicesSection = document.querySelector('.services');
-
-    if (servicesPath && servicesSection) {
-        const pathLength = servicesPath.getTotalLength();
-        
-        gsap.set(servicesPath, {
-            strokeDasharray: pathLength,
-            strokeDashoffset: pathLength,
-            opacity: 0.7
-        });
-
-        gsap.to(servicesPath, {
-            strokeDashoffset: 0,
-            duration: 1,
-            ease: "none",
-            scrollTrigger: {
-                trigger: servicesSection,
-                start: "top center",
-                end: "bottom center",
-                scrub: 1
-            }
-        });
-    }
 }); 
