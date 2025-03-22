@@ -87,6 +87,96 @@ header nav .souligner:hover::after {
   transform: scaleX(1);
   transform-origin: left;
 }
+header nav .burger {
+  display: none;
+  cursor: pointer;
+}
+header nav .burger div {
+  width: 25px;
+  height: 3px;
+  background-color: #F8F4F0;
+  margin: 5px;
+  transition: all 0.3s ease;
+}
+@media screen and (max-width: 900px) {
+  header body {
+    overflow-x: hidden;
+  }
+  header nav {
+    width: 100%;
+    padding: 3% 5% !important;
+    display: flex;
+    justify-content: flex-end;
+  }
+  header nav .nav-links {
+    position: fixed;
+    right: 0;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    background-color: #F8F4F0;
+    background-image: url(images/noise.png);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    transform: translateY(-100%);
+    transition: transform 0.5s ease-in;
+    z-index: 10;
+  }
+  header nav .nav-links li {
+    opacity: 0;
+    margin: 25px 0;
+  }
+  header nav .nav-links li a {
+    color: #283A2A;
+    font-size: 30px;
+    font-weight: 800;
+  }
+  header nav .burger {
+    display: block;
+    z-index: 11;
+    position: fixed;
+    top: 30px;
+    right: 30px;
+  }
+  header nav .burger div {
+    background-color: #F8F4F0;
+    width: 30px;
+    height: 3px;
+    margin: 6px;
+  }
+  header nav .burger.toggle div {
+    background-color: #283A2A;
+  }
+  header .nav-active {
+    transform: translateY(0%) !important;
+    top: 0 !important;
+    margin-top: 0 !important;
+  }
+  header .toggle .line1 {
+    transform: rotate(-45deg) translate(-6px, 6px);
+  }
+  header .toggle .line2 {
+    opacity: 0;
+  }
+  header .toggle .line3 {
+    transform: rotate(45deg) translate(-6px, -6px);
+  }
+  @keyframes navLinkFade {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0px);
+    }
+  }
+}
 header .title {
   display: flex;
   justify-content: center;
@@ -377,51 +467,6 @@ header .title .title-center .soustitre h2 {
   }
 }
 @media (max-width: 700px) {
-  header nav {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 79%;
-    padding: 3% 10% 0% 11%;
-  }
-  header nav ul {
-    list-style: none;
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0.5% 0% 0.5% 0%;
-  }
-  header nav li {
-    font-size: 15px;
-    font-weight: 800;
-    color: #F8F4F0;
-  }
-  header nav a {
-    text-decoration: none;
-    color: inherit;
-  }
-  header nav .souligner {
-    position: relative;
-    display: inline-block;
-    cursor: pointer;
-  }
-  header nav .souligner::after {
-    content: "";
-    position: absolute;
-    left: 0;
-    bottom: -2px;
-    width: 100%;
-    height: 2px;
-    background-color: rgb(255, 255, 255);
-    transform: scaleX(0);
-    transform-origin: right;
-    transition: transform 0.4s ease;
-  }
-  header nav .souligner:hover::after {
-    transform: scaleX(1);
-    transform-origin: left;
-  }
   header .title {
     display: flex;
     justify-content: center;
@@ -433,12 +478,80 @@ header .title .title-center .soustitre h2 {
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 80%;
+    width: 90%;
   }
   header .title .title-center h1 {
     font-family: "Druk Trial", sans-serif;
     font-weight: 900;
-    font-size: clamp(60px, 20vw, 400px);
+    font-size: clamp(60px, 23vw, 400px);
+    flex-wrap: wrap;
+    margin: 0;
+    color: #F8F4F0;
+    width: 100%;
+    text-align: center;
+    white-space: normal;
+    overflow: visible;
+    margin-bottom: 35px;
+  }
+  header .title .title-center .soustitre {
+    display: flex;
+    width: 77%;
+    justify-content: space-between;
+    position: relative;
+    top: -40px;
+    padding-left: 500px;
+    padding-right: 500px;
+  }
+  header .title .title-center .soustitre .marquee-container {
+    overflow: hidden;
+    width: 100%;
+    color: #F8F4F0;
+    margin-left: 22px;
+    font-size: 22px;
+    font-weight: bold;
+    display: none;
+  }
+  header .title .title-center .soustitre .marquee {
+    display: flex;
+    white-space: nowrap;
+    animation: marquee 14s linear infinite;
+  }
+  header .title .title-center .soustitre h2 {
+    width: 100%;
+    color: #F8F4F0;
+    font-size: 21px;
+    font-weight: 800;
+    text-align: center;
+    margin: 0;
+    display: block;
+  }
+  @keyframes marquee {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(-100%);
+    }
+  }
+}
+@media (max-width: 500px) {
+  header .title {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 40% 0%;
+    text-align: center;
+  }
+  header .title .title-center {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 90%;
+  }
+  header .title .title-center h1 {
+    font-family: "Druk Trial", sans-serif;
+    font-weight: 900;
+    font-size: clamp(60px, 31vw, 400px);
     flex-wrap: wrap;
     margin: 0;
     color: #F8F4F0;
@@ -1004,7 +1117,7 @@ header .title .title-center .soustitre h2 {
   flex-direction: column;
   text-align: center;
   padding: 15px 15px 35px 15px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.562);
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   transform: rotate(-2deg);
   cursor: pointer;
@@ -1033,7 +1146,6 @@ header .title .title-center .soustitre h2 {
   height: calc(100% - 50px);
   position: relative;
   overflow: hidden;
-  border-radius: 3px;
   background-color: #f5f5f5;
 }
 .portfolio .case .imgCase1 img, .portfolio .case .imgCase1 video,

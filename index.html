@@ -6,7 +6,6 @@
     <title>Portfolio Vincent</title>
     <link rel="stylesheet" href="styleIndex.css">
     <link href='https://fonts.googleapis.com/css?family=Familjen Grotesk' rel='stylesheet'>
-    <!-- Ajout des scripts GSAP -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.34/dist/lenis.min.js"></script>
@@ -14,13 +13,19 @@
 <body>
     <header id="header">
 
-    <nav class="mainColor" id="accueil"> 
-        <ul>
+    <nav class="mainColor" id="accueil">
+        <ul class="nav-links">
             <li class="souligner"><a href="#section1">À PROPOS</a></li>
             <li class="souligner"><a href="#portfolio">COMPÉTENCES</a></li>
             <li class="souligner"><a href="#competences">TRAVAIL</a></li>
             <li class="souligner"><a href="#textenav">CONTACT</a></li>
         </ul>
+        
+        <div class="burger">
+            <div class="line1"></div>
+            <div class="line2"></div>
+            <div class="line3"></div>
+        </div>
     </nav>
    
     
@@ -147,18 +152,7 @@
         </div>
     </section>
 
-    <section class="services mainColor">
-        <div class="services-path">
-            <svg viewBox="0 0 1000 400" preserveAspectRatio="none">
-                <path d="M0 50
-                         Q 100 50, 150 150
-                         Q 200 250, 300 250
-                         Q 400 250, 500 150
-                         Q 600 50, 700 50
-                         Q 800 50, 850 150
-                         Q 900 250, 1000 250" />
-            </svg>
-        </div>
+    <!-- <section class="services mainColor">
         <div class="services-container">
             <div class="service-item">
                 <h4>PHOTOGRAPHE</h4>
@@ -173,7 +167,7 @@
                 <p>Explorer de nouveaux horizons et relever aux horizons et relever des défis techniques passionnants.</p>
             </div>
         </div>
-    </section>
+    </section> -->
 </div>
   
 

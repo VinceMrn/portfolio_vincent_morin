@@ -400,3 +400,54 @@ document.addEventListener('DOMContentLoaded', () => {
     `;
     document.head.appendChild(style);
 }); 
+
+
+
+
+
+
+
+
+
+
+// Menu burger
+function setupBurgerMenu() {
+    const burger = document.querySelector('.burger');
+    const nav = document.querySelector('.nav-links');
+    const navLinks = document.querySelectorAll('.nav-links li');
+    
+    // Toggle du menu
+    burger.addEventListener('click', () => {
+        // Toggle de la classe active
+        nav.classList.toggle('nav-active');
+        
+        // Animation des liens
+        navLinks.forEach((link, index) => {
+            if (link.style.animation) {
+                link.style.animation = '';
+            } else {
+                link.style.animation = `navLinkFade 0.5s ease forwards ${index / 7 + 0.3}s`;
+            }
+        });
+        
+        // Animation du burger
+        burger.classList.toggle('toggle');
+    });
+    
+    // Fermer le menu quand un lien est cliqué
+    navLinks.forEach(link => {
+        link.addEventListener('click', () => {
+            nav.classList.remove('nav-active');
+            burger.classList.remove('toggle');
+            
+            navLinks.forEach(link => {
+                link.style.animation = '';
+            });
+        });
+    });
+}
+
+// Exécuter après le chargement du DOM
+document.addEventListener('DOMContentLoaded', () => {
+    setupBurgerMenu();
+});
