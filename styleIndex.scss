@@ -1647,6 +1647,228 @@ header{
         }
     }
 
+    @media (max-width: 1524px) {
+        .skills-container {
+            display: flex;
+            justify-content: space-between;
+            padding: 0 5%;
+            position: relative;
+            z-index: 2;
+        }
+    
+        .skill-block {
+            flex: 0 1 300px;
+            background: rgba(40, 58, 42, 0.03);
+            background-color: white;
+            border: 2px solid #283A2A;
+            border-radius: 15px;
+            padding: 40px;
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 10px 30px rgba(40, 58, 42, 0.1);
+            position: relative;
+            margin-top: 50px;
+    
+            &::before {
+                content: '';
+                position: absolute;
+                top: -65px;
+                left: 50%;
+                width: 17px;
+                height: 17px;
+                background: #283A2A;
+                border-radius: 50%;
+                transform: translateX(-50%) scale(0);
+                transition: transform 0.4s ease;
+                z-index: 3;
+            }
+    
+            &::after {
+                content: '';
+                position: absolute;
+                top: -50px;
+                left: 50%;
+                width: 2px;
+                height: 50px;
+                background: #283A2A;
+                transform: scaleY(0);
+                transform-origin: top;
+                transition: transform 0.4s ease 0.2s;
+            }
+    
+            &.visible {
+                opacity: 1;
+                transform: translateY(0);
+    
+                &::before {
+                    transform: translateX(-50%) scale(1);
+                }
+    
+                &::after {
+                    transform: scaleY(1);
+                }
+            }
+    
+            h4 {
+                font-family: 'Druk Trial', sans-serif;
+                color: #283A2A;
+                font-size: 32px;
+                font-weight: 700;
+                margin: 0 0 30px 0;
+                text-align: center;
+                text-transform: uppercase;
+            }
+    
+            .skills-list {
+                list-style: none;
+                padding: 0;
+                margin: 0;
+    
+                li {
+                    color: #283A2A;
+                    font-size: 18px;
+                    font-weight: 500;
+                    margin-bottom: 15px;
+                    padding-left: 25px;
+                    position: relative;
+    
+                    &::before {
+                        content: '';
+                        position: absolute;
+                        left: 0;
+                        top: 50%;
+                        width: 8px;
+                        height: 8px;
+                        background: #283A2A;
+                        border-radius: 50%;
+                        transform: translateY(-50%);
+                    }
+    
+                    &:last-child {
+                        margin-bottom: 0;
+                    }
+                }
+            }
+    
+            &:hover {
+                transform: translateY(-5px);
+                box-shadow: 0 15px 40px rgba(40, 58, 42, 0.15);
+            }
+        }
+    }
+    @media (max-width: 1324px) {
+        .skills-container {
+            display: flex;
+            justify-content: space-between;
+            padding: 0 5%;
+            position: relative;
+            z-index: 2;
+        }
+    
+        .skill-block {
+            flex: 0 1 250px;
+            background: rgba(40, 58, 42, 0.03);
+            background-color: white;
+            border: 2px solid #283A2A;
+            border-radius: 15px;
+            padding: 20px;
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 10px 30px rgba(40, 58, 42, 0.1);
+            position: relative;
+            margin-top: 50px;
+    
+            &::before {
+                content: '';
+                position: absolute;
+                top: -65px;
+                left: 50%;
+                width: 17px;
+                height: 17px;
+                background: #283A2A;
+                border-radius: 50%;
+                transform: translateX(-50%) scale(0);
+                transition: transform 0.4s ease;
+                z-index: 3;
+            }
+    
+            &::after {
+                content: '';
+                position: absolute;
+                top: -50px;
+                left: 50%;
+                width: 2px;
+                height: 50px;
+                background: #283A2A;
+                transform: scaleY(0);
+                transform-origin: top;
+                transition: transform 0.4s ease 0.2s;
+            }
+    
+            &.visible {
+                opacity: 1;
+                transform: translateY(0);
+    
+                &::before {
+                    transform: translateX(-50%) scale(1);
+                }
+    
+                &::after {
+                    transform: scaleY(1);
+                }
+            }
+    
+            h4 {
+                font-family: 'Druk Trial', sans-serif;
+                color: #283A2A;
+                font-size: 32px;
+                font-weight: 700;
+                margin: 0 0 30px 0;
+                text-align: center;
+                text-transform: uppercase;
+            }
+    
+            .skills-list {
+                list-style: none;
+                padding: 0;
+                margin: 0;
+    
+                li {
+                    color: #283A2A;
+                    font-size: 18px;
+                    font-weight: 500;
+                    margin-bottom: 15px;
+                    padding-left: 25px;
+                    position: relative;
+    
+                    &::before {
+                        content: '';
+                        position: absolute;
+                        left: 0;
+                        top: 50%;
+                        width: 8px;
+                        height: 8px;
+                        background: #283A2A;
+                        border-radius: 50%;
+                        transform: translateY(-50%);
+                    }
+    
+                    &:last-child {
+                        margin-bottom: 0;
+                    }
+                }
+            }
+    
+            &:hover {
+                transform: translateY(-5px);
+                box-shadow: 0 15px 40px rgba(40, 58, 42, 0.15);
+            }
+        }
+    }
+
+
     @media (max-width: 1024px) {
         margin-bottom: 40vh;
 
@@ -1659,6 +1881,7 @@ header{
             flex-direction: column;
             align-items: center;
             gap: 40px;
+            text-align: center;
 
             .skill-block {
                 width: 80%;

@@ -1459,6 +1459,202 @@ header .title .title-center .soustitre h2 {
   transform: translateY(-5px);
   box-shadow: 0 15px 40px rgba(40, 58, 42, 0.15);
 }
+@media (max-width: 1524px) {
+  .competences .skills-container {
+    display: flex;
+    justify-content: space-between;
+    padding: 0 5%;
+    position: relative;
+    z-index: 2;
+  }
+  .competences .skill-block {
+    flex: 0 1 300px;
+    background: rgba(40, 58, 42, 0.03);
+    background-color: white;
+    border: 2px solid #283A2A;
+    border-radius: 15px;
+    padding: 40px;
+    opacity: 0;
+    transform: translateY(50px);
+    transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 10px 30px rgba(40, 58, 42, 0.1);
+    position: relative;
+    margin-top: 50px;
+  }
+  .competences .skill-block::before {
+    content: "";
+    position: absolute;
+    top: -65px;
+    left: 50%;
+    width: 17px;
+    height: 17px;
+    background: #283A2A;
+    border-radius: 50%;
+    transform: translateX(-50%) scale(0);
+    transition: transform 0.4s ease;
+    z-index: 3;
+  }
+  .competences .skill-block::after {
+    content: "";
+    position: absolute;
+    top: -50px;
+    left: 50%;
+    width: 2px;
+    height: 50px;
+    background: #283A2A;
+    transform: scaleY(0);
+    transform-origin: top;
+    transition: transform 0.4s ease 0.2s;
+  }
+  .competences .skill-block.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  .competences .skill-block.visible::before {
+    transform: translateX(-50%) scale(1);
+  }
+  .competences .skill-block.visible::after {
+    transform: scaleY(1);
+  }
+  .competences .skill-block h4 {
+    font-family: "Druk Trial", sans-serif;
+    color: #283A2A;
+    font-size: 32px;
+    font-weight: 700;
+    margin: 0 0 30px 0;
+    text-align: center;
+    text-transform: uppercase;
+  }
+  .competences .skill-block .skills-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  .competences .skill-block .skills-list li {
+    color: #283A2A;
+    font-size: 18px;
+    font-weight: 500;
+    margin-bottom: 15px;
+    padding-left: 25px;
+    position: relative;
+  }
+  .competences .skill-block .skills-list li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 50%;
+    width: 8px;
+    height: 8px;
+    background: #283A2A;
+    border-radius: 50%;
+    transform: translateY(-50%);
+  }
+  .competences .skill-block .skills-list li:last-child {
+    margin-bottom: 0;
+  }
+  .competences .skill-block:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 40px rgba(40, 58, 42, 0.15);
+  }
+}
+@media (max-width: 1324px) {
+  .competences .skills-container {
+    display: flex;
+    justify-content: space-between;
+    padding: 0 5%;
+    position: relative;
+    z-index: 2;
+  }
+  .competences .skill-block {
+    flex: 0 1 250px;
+    background: rgba(40, 58, 42, 0.03);
+    background-color: white;
+    border: 2px solid #283A2A;
+    border-radius: 15px;
+    padding: 20px;
+    opacity: 0;
+    transform: translateY(50px);
+    transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 10px 30px rgba(40, 58, 42, 0.1);
+    position: relative;
+    margin-top: 50px;
+  }
+  .competences .skill-block::before {
+    content: "";
+    position: absolute;
+    top: -65px;
+    left: 50%;
+    width: 17px;
+    height: 17px;
+    background: #283A2A;
+    border-radius: 50%;
+    transform: translateX(-50%) scale(0);
+    transition: transform 0.4s ease;
+    z-index: 3;
+  }
+  .competences .skill-block::after {
+    content: "";
+    position: absolute;
+    top: -50px;
+    left: 50%;
+    width: 2px;
+    height: 50px;
+    background: #283A2A;
+    transform: scaleY(0);
+    transform-origin: top;
+    transition: transform 0.4s ease 0.2s;
+  }
+  .competences .skill-block.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  .competences .skill-block.visible::before {
+    transform: translateX(-50%) scale(1);
+  }
+  .competences .skill-block.visible::after {
+    transform: scaleY(1);
+  }
+  .competences .skill-block h4 {
+    font-family: "Druk Trial", sans-serif;
+    color: #283A2A;
+    font-size: 32px;
+    font-weight: 700;
+    margin: 0 0 30px 0;
+    text-align: center;
+    text-transform: uppercase;
+  }
+  .competences .skill-block .skills-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  .competences .skill-block .skills-list li {
+    color: #283A2A;
+    font-size: 18px;
+    font-weight: 500;
+    margin-bottom: 15px;
+    padding-left: 25px;
+    position: relative;
+  }
+  .competences .skill-block .skills-list li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 50%;
+    width: 8px;
+    height: 8px;
+    background: #283A2A;
+    border-radius: 50%;
+    transform: translateY(-50%);
+  }
+  .competences .skill-block .skills-list li:last-child {
+    margin-bottom: 0;
+  }
+  .competences .skill-block:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 40px rgba(40, 58, 42, 0.15);
+  }
+}
 @media (max-width: 1024px) {
   .competences {
     margin-bottom: 40vh;
@@ -1471,6 +1667,7 @@ header .title .title-center .soustitre h2 {
     flex-direction: column;
     align-items: center;
     gap: 40px;
+    text-align: center;
   }
   .competences .skills-container .skill-block {
     width: 80%;
@@ -1649,6 +1846,149 @@ footer .end .legal {
   font-size: 17px;
   font-weight: 400;
   cursor: pointer;
+}
+
+/* Media queries pour footer - inspiration du header */
+@media (max-width: 1400px) {
+  footer .BoxFooter {
+    padding: 10% 15% 7% 15%;
+  }
+  
+  footer .BoxFooter .title-centerFooter h3 {
+    font-size: 200px;
+  }
+  
+  footer .BoxFooter .title-centerFooter .soustitreFooter {
+    width: 90%;
+  }
+  
+  footer .end .navFooter {
+    width: 40%;
+    padding-right: 25%;
+  }
+  
+  footer .end .Reseau {
+    width: 15%;
+  }
+  
+  footer .end .Reseau .imgReseau {
+    width: 45px;
+    height: 45px;
+  }
+}
+
+@media (max-width: 1000px) {
+  footer .BoxFooter {
+    padding: 8% 10% 6% 10%;
+  }
+  
+  footer .BoxFooter .title-centerFooter h3 {
+    font-size: 150px;
+  }
+  
+  footer .BoxFooter .title-centerFooter .soustitreFooter {
+    width: 95%;
+    top: -20px;
+  }
+  
+  footer .BoxFooter .title-centerFooter .soustitreFooter .marqueeFooter-container {
+    font-size: 20px;
+  }
+  
+  footer .BoxFooter .title-centerFooter .soustitreFooter h2 {
+    font-size: 20px;
+  }
+  
+  footer .end {
+    flex-direction: column;
+    padding: 15px 0;
+  }
+  
+  footer .end .navFooter {
+    width: 80%;
+    margin: 0 auto 15px;
+    padding-right: 0;
+    text-align: center;
+  }
+  
+  footer .end .Reseau {
+    width: 40%;
+    margin: 0 auto;
+  }
+}
+
+@media (max-width: 700px) {
+  footer .BoxFooter {
+    padding: 8% 5% 6% 5%;
+  }
+  
+  footer .BoxFooter .title-centerFooter h3 {
+    font-size: 100px;
+  }
+  
+  footer .BoxFooter .title-centerFooter .soustitreFooter {
+    flex-direction: column;
+    align-items: center;
+    top: -10px;
+  }
+  
+  footer .BoxFooter .title-centerFooter .soustitreFooter .marqueeFooter-container {
+    width: 100%;
+    margin-left: 0;
+    margin-bottom: 15px;
+    font-size: 18px;
+  }
+  
+  footer .BoxFooter .title-centerFooter .soustitreFooter h2 {
+    width: 100%;
+    text-align: center;
+    font-size: 18px;
+  }
+  
+  footer .end .navFooter ul {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  
+  footer .end .navFooter ul li {
+    margin: 0 10px 10px;
+  }
+  
+  footer .end .Reseau {
+    width: 60%;
+  }
+  
+  footer .end .Reseau .imgReseau {
+    width: 40px;
+    height: 40px;
+  }
+}
+
+@media (max-width: 500px) {
+  footer .BoxFooter {
+    padding: 10% 3% 8% 3%;
+  }
+  
+  footer .BoxFooter .title-centerFooter h3 {
+    font-size: 60px;
+  }
+  
+  footer .BoxFooter .title-centerFooter .soustitreFooter .marqueeFooter-container {
+    font-size: 16px;
+  }
+  
+  footer .BoxFooter .title-centerFooter .soustitreFooter h2 {
+    font-size: 16px;
+  }
+  
+  footer .end .Reseau {
+    width: 80%;
+  }
+  
+  footer .end .Reseau .imgReseau {
+    width: 35px;
+    height: 35px;
+  }
 }
 
 .modal-overlay {
