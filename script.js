@@ -2,10 +2,10 @@
 function toggleHeaderFooter() {
     const header = document.getElementById("header");
     const footer = document.getElementById("footer");
-    const portfolioSection = document.getElementById("portfolio");
+    const portfolioSectionHeader = document.getElementById("portfolio");
     const contactSection = document.getElementById("competences");
 
-    const portfolioTop = portfolioSection.getBoundingClientRect().top;
+    const portfolioTop = portfolioSectionHeader.getBoundingClientRect().top;
     const contactTop = contactSection.getBoundingClientRect().top;
 
     if (portfolioTop <= 0) {
@@ -98,7 +98,7 @@ gsap.ticker.add((time) => {
 });
 
 // Configuration de GSAP ScrollTrigger
-gsap.registerPlugin(ScrollTrigger);
+gsap.registerPlugin(ScrollTrigger, TextPlugin);
 
 ScrollTrigger.scrollerProxy(document.body, {
     scrollTop(value) {
@@ -198,9 +198,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Animation du chemin avec GSAP
     const portfolioPath = document.querySelector('.portfolio-path path');
-    const portfolioSection = document.querySelector('.portfolio');
+    const portfolioSectionPath = document.querySelector('.portfolio');
 
-    if (portfolioPath && portfolioSection) {
+    if (portfolioPath && portfolioSectionPath) {
         const pathLength = portfolioPath.getTotalLength();
         
         gsap.set(portfolioPath, {
@@ -214,7 +214,7 @@ document.addEventListener('DOMContentLoaded', () => {
             duration: 1,
             ease: "none",
             scrollTrigger: {
-                trigger: portfolioSection,
+                trigger: portfolioSectionPath,
                 start: "top center",
                 end: "bottom center",
                 scrub: 1
@@ -307,57 +307,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Animation des images
-    // Images de gauche
-    gsap.to(".ProposImgGauche .photo1, .ProposImgGauche .photo2, .ProposImgGauche .photo5", {
-        scrollTrigger: {
-            trigger: ".propos",
-            start: "top center",
-            end: "bottom center",
-            scrub: 1
-        },
-        x: -50,
-        rotate: -10,
-        duration: 1,
-        ease: "power2.inOut"
-    });
-
-    // Images de droite
-    gsap.to(".ProposImgDroite .photo3, .ProposImgDroite .photo4, .ProposImgDroite .photo6", {
-        scrollTrigger: {
-            trigger: ".propos",
-            start: "top center",
-            end: "bottom center",
-            scrub: 1
-        },
-        x: 50,
-        rotate: 10,
-        duration: 1,
-        ease: "power2.inOut"
-    });
-
-    // Animation de rotation initiale des images
-    gsap.set(".ProposImgGauche .photo1", { rotate: -5 });
-    gsap.set(".ProposImgGauche .photo2", { rotate: 3 });
-    gsap.set(".ProposImgGauche .photo5", { rotate: -5 });
-    gsap.set(".ProposImgDroite .photo3", { rotate: -5 });
-    gsap.set(".ProposImgDroite .photo4", { rotate: 0.5 });
-    gsap.set(".ProposImgDroite .photo6", { rotate: 5 });
-
-    // Animation des cases du portfolio
-    gsap.to(".case", {
-        scrollTrigger: {
-            trigger: ".portfolio",
-            start: "top center",
-            end: "bottom center",
-            scrub: 1
-        },
-        y: -50,
-        rotate: 0,
-        duration: 1,
-        stagger: 0.2,
-        ease: "power2.out"
-    });
+    
 
     // Menu burger
     const burger = document.querySelector('.burger-menu');
@@ -399,16 +349,126 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     `;
     document.head.appendChild(style);
-}); 
 
-
-
-
-
-
-
-
-
+    // =================================================================
+    // ANIMATION DU TITRE PORTFOLIO -> MES COMPÉTENCES
+    // =================================================================
+    
+    // Récupérer les éléments nécessaires
+    const portfolioTitle = document.getElementById('portfolio-title');
+    const portfolioSectionTitle = document.getElementById('portfolio');
+    const competencesSection = document.getElementById('competences');
+    
+    // Vérifier que tous les éléments existent
+    if (portfolioTitle && portfolioSectionTitle && competencesSection) {
+        console.log("Éléments trouvés pour l'animation du titre");
+        
+        // Assurer que le titre est en position fixe et stylisé correctement
+        portfolioTitle.style.position = 'fixed';
+        portfolioTitle.style.top = '200px'; // Augmenté de 150px à 200px
+        portfolioTitle.style.left = '0';
+        portfolioTitle.style.width = '100%';
+        portfolioTitle.style.textAlign = 'center';
+        portfolioTitle.style.zIndex = '10';
+        portfolioTitle.style.fontFamily = "'Druk Trial', sans-serif";
+        portfolioTitle.style.transition = 'opacity 0.3s ease, transform 0.3s ease';
+        
+        // Créer des options pour l'IntersectionObserver
+        const observerOptions = {
+            root: null, // Utiliser la fenêtre comme racine
+            rootMargin: '-20% 0px', // Marge au-dessus et en-dessous
+            threshold: 0.1 // Déclencher lorsque 10% de l'élément est visible
+        };
+        
+        // Créer l'IntersectionObserver pour la section des compétences
+        const competencesObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                // Si la section des compétences entre dans la vue
+                if (entry.isIntersecting) {
+                    console.log("La section compétences est visible");
+                    // Ajouter une classe pour l'animation
+                    portfolioTitle.classList.add('animating');
+                    
+                    // Changer le texte après une courte pause
+                    setTimeout(() => {
+                        // Changer le texte
+                        portfolioTitle.textContent = "MES COMPETENCES";
+                        // Ajouter une classe pour les styles de compétences
+                        portfolioTitle.classList.add('transform-complete');
+                        
+                        // Terminer l'animation
+                        setTimeout(() => {
+                            portfolioTitle.classList.remove('animating');
+                        }, 300);
+                    }, 300);
+                }
+            });
+        }, observerOptions);
+        
+        // Observer la section des compétences
+        competencesObserver.observe(competencesSection);
+        
+        // Observer la section du portfolio pour revenir au texte original
+        const portfolioObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                // Si la section portfolio est visible et que nous remontons
+                if (entry.isIntersecting && window.scrollY < document.body.scrollHeight / 2) {
+                    console.log("Retour à la section portfolio");
+                    
+                    // Ajouter une classe pour l'animation
+                    portfolioTitle.classList.add('animating');
+                    
+                    // Changer le texte après une courte pause
+                    setTimeout(() => {
+                        // Changer le texte
+                        portfolioTitle.textContent = "PORTFOLIO";
+                        // Supprimer la classe des styles de compétences
+                        portfolioTitle.classList.remove('transform-complete');
+                        
+                        // Terminer l'animation
+                        setTimeout(() => {
+                            portfolioTitle.classList.remove('animating');
+                        }, 300);
+                    }, 300);
+                }
+            });
+        }, observerOptions);
+        
+        // Observer la section du portfolio
+        portfolioObserver.observe(portfolioSectionTitle);
+        
+        // Ajouter un gestionnaire d'événements de défilement pour les cas spéciaux
+        window.addEventListener('scroll', () => {
+            const competencesRect = competencesSection.getBoundingClientRect();
+            const portfolioRect = portfolioSectionTitle.getBoundingClientRect();
+            
+            // Si nous sommes complètement au-dessus de la section des compétences
+            if (competencesRect.top > window.innerHeight) {
+                // Vérifier si le texte n'est pas déjà "PORTFOLIO"
+                if (portfolioTitle.textContent !== "PORTFOLIO") {
+                    console.log("Retour au texte PORTFOLIO (défilement)");
+                    portfolioTitle.textContent = "PORTFOLIO";
+                    portfolioTitle.classList.remove('transform-complete');
+                }
+            }
+            
+            // Si nous sommes complètement en dessous de la section portfolio
+            if (portfolioRect.bottom < 0 && competencesRect.top < window.innerHeight) {
+                // Vérifier si le texte n'est pas déjà "MES COMPÉTENCES"
+                if (portfolioTitle.textContent !== "MES COMPETENCES") {
+                    console.log("Changement vers MES COMPETENCES (défilement)");
+                    portfolioTitle.textContent = "MES COMPETENCES";
+                    portfolioTitle.classList.add('transform-complete');
+                }
+            }
+        });
+    } else {
+        console.error("Éléments manquants pour l'animation du titre:", 
+            portfolioTitle ? "Titre trouvé" : "Titre INTROUVABLE", 
+            portfolioSectionTitle ? "Section portfolio trouvée" : "Section portfolio INTROUVABLE",
+            competencesSection ? "Section compétences trouvée" : "Section compétences INTROUVABLE");
+    }
+});
 
 // Menu burger
 function setupBurgerMenu() {
@@ -450,4 +510,4 @@ function setupBurgerMenu() {
 // Exécuter après le chargement du DOM
 document.addEventListener('DOMContentLoaded', () => {
     setupBurgerMenu();
-});
+}); 

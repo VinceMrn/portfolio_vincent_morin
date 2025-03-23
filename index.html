@@ -8,7 +8,9 @@
     <link href='https://fonts.googleapis.com/css?family=Familjen Grotesk' rel='stylesheet'>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/TextPlugin.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.34/dist/lenis.min.js"></script>
+    <script src="title-animation.js" defer></script>
 </head>
 <body>
     <header id="header">
@@ -16,9 +18,9 @@
     <nav class="mainColor" id="accueil">
         <ul class="nav-links">
             <li class="souligner"><a href="#section1">À PROPOS</a></li>
-            <li class="souligner"><a href="#portfolio">COMPÉTENCES</a></li>
-            <li class="souligner"><a href="#competences">TRAVAIL</a></li>
-            <li class="souligner"><a href="#textenav">CONTACT</a></li>
+            <li class="souligner"><a href="#competences">COMPÉTENCES</a></li>
+            <li class="souligner"><a href="#portfolio">PORTFOLIO</a></li>
+            <li class="souligner"><a href="#footer">CONTACT</a></li>
         </ul>
         
         <div class="burger">
@@ -82,7 +84,7 @@
     </section>
  
 <div class="lapos">
-    <h3 class="realisationss">PORTFOLIO</h3>
+    <h3 class="réalisation" id="portfolio-title">PORTFOLIO</h3>
 
     <section class="portfolio mainColor" id="portfolio">
         <div class="portfolio-path">
@@ -151,23 +153,6 @@
             </div>
         </div>
     </section>
-
-    <!-- <section class="services mainColor">
-        <div class="services-container">
-            <div class="service-item">
-                <h4>PHOTOGRAPHE</h4>
-                <p>Capturer des moments uniques et créer des souvenirs Capturer réer des souvenirs inoubliables à travers mon objectif.</p>
-            </div>
-            <div class="service-item">
-                <h4>CRÉATEUR</h4>
-                <p>Conception es moments uniques et créer des souvenirs de projets web innovants et créatifs sur mesure.</p>
-            </div>
-            <div class="service-item">
-                <h4>AVENTURIER</h4>
-                <p>Explorer de nouveaux horizons et relever aux horizons et relever des défis techniques passionnants.</p>
-            </div>
-        </div>
-    </section> -->
 </div>
   
 
@@ -177,7 +162,6 @@
                 <path d="M0 100 H1920" />
             </svg>
         </div>
-        <h3>MES COMPETENCES</h3>
         <div class="skills-container">
             <div class="skill-block" data-skill="frontend">
                 <h4>FRONT-END</h4>
